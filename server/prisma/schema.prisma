@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  role      String   @default("EMPLOYEE") // EMPLOYEE, ADMIN
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Profile Details
+  firstName String?
+  lastName  String?
+  phone     String?
+  address   String?
+  avatar    String?
+
+  attendance Attendance[]
+  leaves     LeaveRequest[]
+}
+
+model Attendance {
+  id        Int      @id @default(autoincrement())
+  date      DateTime @default(now())
+  checkIn   DateTime?
+  checkOut  DateTime?
+  status    String   @default("ABSENT") // PRESENT, ABSENT, HALF_DAY, LEAVE
+  
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model LeaveRequest {
+  id        Int      @id @default(autoincrement())
+  type      String   // PAID, SICK, UNPAID
+  startDate DateTime
+  endDate   DateTime
+  reason    String?
+  status    String   @default("PENDING") // PENDING, APPROVED, REJECTED
+  
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
