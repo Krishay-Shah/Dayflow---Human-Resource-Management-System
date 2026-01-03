@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { AuthProvider } from './context/AuthContext';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AppRoutes from './routes/AppRoutes';
 import './App.css'
 
 function App() {
@@ -8,11 +9,13 @@ function App() {
     
   return (
     <>
-    <div className='min-h-screen bg-black text-white'>
-    <h1>
-      This is the DayFlow Project
-    </h1>
-    </div>
+    <AuthProvider>
+      <Router>
+        <div className="antialiased text-gray-200">
+          <AppRoutes />
+        </div>
+      </Router>
+    </AuthProvider>
     </>
   )
 }
