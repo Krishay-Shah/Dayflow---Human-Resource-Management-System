@@ -1,20 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// frontend/src/App.jsx
+import React from 'react';
+import Dashboard from './Dashboard';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-    
   return (
-    <>
-    <div className='min-h-screen bg-black text-white'>
-    <h1>
-      This is the DayFlow Project
-    </h1>
+    <div className="App">
+      <Dashboard />
     </div>
-    </>
-  )
+  );
 }
 
-export default App
+export default App;
