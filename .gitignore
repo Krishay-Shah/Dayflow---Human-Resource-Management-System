@@ -1,5 +1,50 @@
-node_modules
-.env
-dist
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+.idx
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
 .DS_Store
-coverage
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# vercel
+.vercel
+
+# firebase
+.firebase
+*.log
+firebase-debug.log*
+firestore-debug.log*
+
+# IDX
+.idx/
+
+# turbo
+.turbo
+
+# patch-package
+/patches
